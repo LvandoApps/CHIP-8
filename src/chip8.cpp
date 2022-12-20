@@ -4,7 +4,7 @@
 
 CHIP8::CHIP8() {
     pc = START_ADDRESS;
-    // Load the fonts 0 through F into the memory of the CHIP8
+    // Load the fonts 0 through F into the memory of the CHIP8, starting at 0x050 and ending at 0x0A0 (80 bytes)
     for (int i = 0; i < FONTSET_SIZE; i++) {
         memory[FONTSET_START_ADDRESS + i] = fontset[i];
     }

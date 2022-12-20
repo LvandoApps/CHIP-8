@@ -23,6 +23,7 @@ class CHIP8 {
         uint32_t display[VIDEO_WIDTH * VIDEO_HEIGHT];
         uint8_t keypad[KEY_COUNT];
         uint8_t sp;
+        uint16_t opcode;
         // The CHIP8 has a built-in font with sprite data representing the hexadecimal numbers from 0 through F and should be 4 pixels 
         // wide and 5 pixels tall (where in this case, pixel = bit, i.e black and white when displayed). 
         // As such each character has a size of 5 bytes, and when laid out vertically in binary notation should resemble the shape of the given character. 
@@ -57,5 +58,6 @@ class CHIP8 {
         CHIP8();
         ~CHIP8();
         void loadGame(char const* filename);
+
 
 };
