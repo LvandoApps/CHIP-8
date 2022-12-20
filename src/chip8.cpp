@@ -10,9 +10,7 @@ CHIP8::CHIP8() {
     }
 }
 
-CHIP8::~CHIP8() {
-
-}
+CHIP8::~CHIP8() {}
 
 void CHIP8::loadGame(char const* filename) {
     // Open the stream to binary and get the file pointer at the end of the file to get size efficiently before beginning
