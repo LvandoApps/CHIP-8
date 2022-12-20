@@ -23,6 +23,9 @@ void CHIP8::loadGame(char const* filename) {
         }
         delete[] buffer;
     }
+    else {
+        std::cout << "Error opening ROM" << std::endl;
+    }
 }
 
 int main() {
