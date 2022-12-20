@@ -4,6 +4,10 @@
 
 CHIP8::CHIP8() {
     pc = START_ADDRESS;
+    // Load the fonts 0 through F into the memory of the CHIP8
+    for (int i = 0; i < FONTSET_SIZE; i++) {
+        memory[FONTSET_START_ADDRESS + i] = fontset[i];
+    }
 }
 
 CHIP8::~CHIP8() {
