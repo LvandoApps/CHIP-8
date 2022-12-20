@@ -11,17 +11,20 @@ CHIP8::~CHIP8() {
 }
 
 void CHIP8::loadGame(char const* filename) {
+    // Open the stream to binary and get the file pointer at the end of the file to get size efficiently before beginning
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
     if (file.is_open()) {
         std::streampos filesize = file.tellg();
-        char* buffer = new char[filesize];
+        // Return to the beginning of the file and store the contents of the file into a dynamic array of chars (dynamic to account for obvious changes in filesize)
+        char* contents = new char[filesize];
         file.seekg(0, std::ios::beg);
-        file.read(buffer, filesize);
+        file.read(contents, filesize);
         file.close();
+        // Load the now stored contents of the game into the memory of the CHIP8, starting at 0x200 (due to 0x000 - 0x1FF being reserved)
         for (long i = 0; i < filesize; i++) {
-            memory[START_ADDRESS + i] = buffer[i];
+            memory[START_ADDRESS + i] = contents[i];
         }
-        delete[] buffer;
+        delete[] contents;
     }
     else {
         std::cout << "Error opening ROM" << std::endl;
