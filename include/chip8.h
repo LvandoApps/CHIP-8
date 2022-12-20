@@ -6,6 +6,7 @@ const unsigned int REGISTER_COUNT = 16;
 const unsigned int STACK_LEVELS = 16;
 const unsigned int VIDEO_HEIGHT = 32;
 const unsigned int VIDEO_WIDTH = 64;
+const unsigned int START_ADDRESS = 0x200;
 
 class CHIP8 {
     public:
@@ -19,4 +20,10 @@ class CHIP8 {
         uint32_t display[VIDEO_WIDTH * VIDEO_HEIGHT];
         uint8_t keypad[KEY_COUNT];
         uint8_t sp;
+
+    public:
+        CHIP8();
+        ~CHIP8();
+        void loadGame(char const* filename);
+
 };
