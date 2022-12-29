@@ -5,8 +5,8 @@
 CHIP8::CHIP8() {
     pc = START_ADDRESS;
     // Load the fonts 0 through F into the memory of the CHIP8, starting at 0x050 and ending at 0x0A0 (80 bytes)
-    for (int i = 0; i < FONTSET_SIZE; i++) {
-        memory[FONTSET_START_ADDRESS + i] = fontset[i];
+    for (int i = 0; i < SPRITE_SIZE; i++) {
+        memory[SPRITE_START_ADDRESS + i] = sprite[i];
     }
 }
 
@@ -31,6 +31,19 @@ void CHIP8::loadGame(char const* filename) {
     else {
         std::cout << "Error opening ROM" << std::endl;
     }
+}
+
+void CHIP8::INSTRUCT_00E0() {
+    memset(display, 0, sizeof(display));
+}
+
+void CHIP8::INSTRUCT_00EE() {
+    sp--;
+    pc = stack[sp];
+}
+
+void CHIP8::INSTRUCT_1nnn() {
+    uint16_t cur_address = instruction & nnn;
 }
 
 int main() {
