@@ -33,17 +33,63 @@ void CHIP8::loadGame(char const* filename) {
     }
 }
 
+// Clear the display.
 void CHIP8::INSTRUCT_00E0() {
     memset(display, 0, sizeof(display));
 }
 
+// Return from a subroutine.
+// The interpreter sets the program counter to the address at the top of the stack, then subtracts 1 from the stack pointer.
 void CHIP8::INSTRUCT_00EE() {
     sp--;
     pc = stack[sp];
 }
 
+// Jump to location nnn.
+// The interpreter sets the program counter to nnn.
 void CHIP8::INSTRUCT_1nnn() {
     uint16_t cur_address = instruction & nnn;
+    pc = cur_address;
+}
+
+// Call subroutine at nnn.
+// The interpreter increments the stack pointer, then puts the current PC on the top of the stack. The PC is then set to nnn.
+void CHIP8::INSTRUCT_2nnn() {
+    uint16_t cur_address = instruction & nnn;
+    stack[sp] = pc;
+    sp++;
+    pc = cur_address;
+}
+
+void CHIP8::INSTRUCT_3xkk() {
+    // There is no uint4_t for Vx or Vy however this will suffice
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t byte = instruction & kk;
+    if (registers[Vx] == byte) {
+        pc += 2;
+    }
+}
+
+void CHIP8::INSTRUCT_4xkk() {
+    // There is no uint4_t for Vx or Vy however this will suffice
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t byte = instruction & kk;
+    if (registers[Vx] != byte) {
+        pc += 2;
+    }
+}
+
+void CHIP8::INSTRUCT_5xy0() {
+    // There is no uint4_t for Vx or Vy however this will suffice
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t Vy = (instruction & y) >> 4u;
+    if (registers[Vx] == registers[Vy]) {
+        pc += 2;
+    }
+}
+
+void CHIP8::INSTRUCT_6xkk() {
+
 }
 
 int main() {
