@@ -211,19 +211,25 @@ void CHIP8::INSTRUCT_8xyE() {
 // Skip next instruction if Vx != Vy.
 // The values of Vx and Vy are compared, and if they are not equal, the program counter is increased by 2.
 void CHIP8::INSTRUCT_9xy0() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t Vy = (instruction & y) >> 4u;
+    if (registers[Vx] != registers[Vy]) {
+        pc += 2;
+    }
 }
 
 // Set I = nnn.
 // The value of register I is set to nnn.
 void CHIP8::INSTRUCT_Annn() {
-    
+    uint16_t cur_address = instruction & nnn;
+    index = cur_address;
 }
 
 // Jump to location nnn + V0.
 // The program counter is set to nnn plus the value of V0.
 void CHIP8::INSTRUCT_Bnnn() {
-    
+    uint16_t cur_address = instruction & nnn;
+    pc = cur_address + registers[0x0];
 }
 
 // Set Vx = random byte AND kk.
