@@ -41,8 +41,8 @@ void CHIP8::INSTRUCT_00E0() {
 // Return from a subroutine.
 // The interpreter sets the program counter to the address at the top of the stack, then subtracts 1 from the stack pointer.
 void CHIP8::INSTRUCT_00EE() {
-    sp--;
     pc = stack[sp];
+    sp--;
 }
 
 // Jump to location nnn.
@@ -56,8 +56,8 @@ void CHIP8::INSTRUCT_1nnn() {
 // The interpreter increments the stack pointer, then puts the current PC on the top of the stack. The PC is then set to nnn.
 void CHIP8::INSTRUCT_2nnn() {
     uint16_t cur_address = instruction & nnn;
-    stack[sp] = pc;
     sp++;
+    stack[sp] = pc;
     pc = cur_address;
 }
 
