@@ -62,7 +62,7 @@ void CHIP8::INSTRUCT_2nnn() {
 }
 
 void CHIP8::INSTRUCT_3xkk() {
-    // There is no uint4_t for Vx or Vy however this will suffice
+    // There is no uint4_t data type for Vx or Vy, however uint8_t will suffice
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t byte = instruction & kk;
     if (registers[Vx] == byte) {
@@ -71,7 +71,6 @@ void CHIP8::INSTRUCT_3xkk() {
 }
 
 void CHIP8::INSTRUCT_4xkk() {
-    // There is no uint4_t for Vx or Vy however this will suffice
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t byte = instruction & kk;
     if (registers[Vx] != byte) {
@@ -80,7 +79,6 @@ void CHIP8::INSTRUCT_4xkk() {
 }
 
 void CHIP8::INSTRUCT_5xy0() {
-    // There is no uint4_t for Vx or Vy however this will suffice
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t Vy = (instruction & y) >> 4u;
     if (registers[Vx] == registers[Vy]) {
@@ -89,7 +87,117 @@ void CHIP8::INSTRUCT_5xy0() {
 }
 
 void CHIP8::INSTRUCT_6xkk() {
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t byte = instruction & kk;
+    registers[Vx] = byte;
+}
 
+void CHIP8::INSTRUCT_7xkk() {
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t byte = instruction & kk;
+    registers[Vx] += byte;
+}
+
+void CHIP8::INSTRUCT_8xy0() {
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t Vy = (instruction & y) >> 4u;
+    registers[Vx] = registers[Vy];
+}
+
+void CHIP8::INSTRUCT_8xy1() {
+
+}
+
+void CHIP8::INSTRUCT_8xy2() {
+    
+}
+
+void CHIP8::INSTRUCT_8xy3() {
+    
+}
+
+void CHIP8::INSTRUCT_8xy4() {
+    
+}
+
+void CHIP8::INSTRUCT_8xy5() {
+    
+}
+
+void CHIP8::INSTRUCT_8xy6() {
+    
+}
+
+void CHIP8::INSTRUCT_8xy7() {
+    
+}
+
+void CHIP8::INSTRUCT_8xyE() {
+    
+}
+
+void CHIP8::INSTRUCT_9xy0() {
+    
+}
+
+void CHIP8::INSTRUCT_Annn() {
+    
+}
+
+void CHIP8::INSTRUCT_Bnnn() {
+    
+}
+
+void CHIP8::INSTRUCT_Cxkk() {
+    
+}
+
+void CHIP8::INSTRUCT_Dxyn() {
+    
+}
+
+void CHIP8::INSTRUCT_Ex9E() {
+    
+}
+
+void CHIP8::INSTRUCT_ExA1() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx07() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx0A() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx15() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx18() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx1E() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx29() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx33() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx55() {
+    
+}
+
+void CHIP8::INSTRUCT_Fx65() {
+    
 }
 
 int main() {
