@@ -1,5 +1,6 @@
 #include <stdint.h>
 
+// Some const's to prevent magic numbers
 const unsigned int KEY_COUNT = 16;
 const unsigned int MEMORY_SIZE = 4096;
 const unsigned int REGISTER_COUNT = 16;
@@ -53,6 +54,11 @@ class CHIP8 {
             0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
             0xF0, 0x80, 0xF0, 0x80, 0x80  // F
         };
+        //  nnn or addr - A 12-bit value, the lowest 12 bits of the instruction
+        //  n or nibble - A 4-bit value, the lowest 4 bits of the instruction
+        //  x - A 4-bit value, the lower 4 bits of the high byte of the instruction
+        //  y - A 4-bit value, the upper 4 bits of the low byte of the instruction
+        //  kk or byte - An 8-bit value, the lowest 8 bits of the instruction
         unsigned int nnn = 0x0FFF;
         unsigned int n = 0x000F;
         // Reminder that for x, it is the lower 4 bits of the high byte (so bits 8-12), so shift accordingly when using (8).
@@ -65,11 +71,6 @@ class CHIP8 {
         ~CHIP8();
         void loadGame(char const* filename);
         // All instructions for the CHIP8 below:
-        //  nnn or addr - A 12-bit value, the lowest 12 bits of the instruction
-        //  n or nibble - A 4-bit value, the lowest 4 bits of the instruction
-        //  x - A 4-bit value, the lower 4 bits of the high byte of the instruction
-        //  y - A 4-bit value, the upper 4 bits of the low byte of the instruction
-        //  kk or byte - An 8-bit value, the lowest 8 bits of the instruction
         void INSTRUCT_0nnn();
         void INSTRUCT_00E0();
         void INSTRUCT_00EE();
