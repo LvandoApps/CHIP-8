@@ -354,7 +354,8 @@ void CHIP8::INSTRUCT_Fx18() {
 // Set I = I + Vx.
 // The values of I and Vx are added, and the results are stored in I.
 void CHIP8::INSTRUCT_Fx1E() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    index += registers[Vx];
 }
 
 // Set I = location of sprite for digit Vx.
