@@ -282,72 +282,56 @@ void CHIP8::INSTRUCT_Fx07() {
 // All execution stops until a key is pressed, then the value of that key is stored in Vx.
 void CHIP8::INSTRUCT_Fx0A() {
     uint8_t Vx = (instruction & x) >> 8u;
-    if (keypad[0])
-	{
+    if (keypad[0]) {
 		registers[Vx] = 0;
 	}
-	else if (keypad[1])
-	{
+	else if (keypad[1]) {
 		registers[Vx] = 1;
 	}
-	else if (keypad[2])
-	{
+	else if (keypad[2]) {
 		registers[Vx] = 2;
 	}
-	else if (keypad[3])
-	{
+	else if (keypad[3]) {
 		registers[Vx] = 3;
 	}
-	else if (keypad[4])
-	{
+	else if (keypad[4]) {
 		registers[Vx] = 4;
 	}
-	else if (keypad[5])
-	{
+	else if (keypad[5]) {
 		registers[Vx] = 5;
 	}
-	else if (keypad[6])
-	{
+	else if (keypad[6]) {
 		registers[Vx] = 6;
 	}
-	else if (keypad[7])
-	{
+	else if (keypad[7]) {
 		registers[Vx] = 7;
 	}
-	else if (keypad[8])
-	{
+	else if (keypad[8]) {
 		registers[Vx] = 8;
 	}
-	else if (keypad[9])
-	{
+	else if (keypad[9]) {
 		registers[Vx] = 9;
 	}
-	else if (keypad[10])
-	{
+	else if (keypad[10]) {
 		registers[Vx] = 10;
 	}
-	else if (keypad[11])
-	{
+	else if (keypad[11]) {
 		registers[Vx] = 11;
 	}
-	else if (keypad[12])
-	{
+	else if (keypad[12]) {
 		registers[Vx] = 12;
 	}
-	else if (keypad[13])
-	{
+	else if (keypad[13]) {
 		registers[Vx] = 13;
 	}
-	else if (keypad[14])
-	{
+	else if (keypad[14]) {
 		registers[Vx] = 14;
 	}
-	else if (keypad[15])
-	{
+	else if (keypad[15]) {
 		registers[Vx] = 15;
 	}
-	else
-	{
+    // If we decrement the pc by 2 then we are effectively looping this instruction, hence waiting
+	else {
 		pc -= 2;
 	}
 
@@ -356,13 +340,15 @@ void CHIP8::INSTRUCT_Fx0A() {
 // Set delay timer = Vx.
 // DT is set equal to the value of Vx.
 void CHIP8::INSTRUCT_Fx15() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    dt = registers[Vx];
 }
 
 // Set sound timer = Vx.
 // ST is set equal to the value of Vx.
 void CHIP8::INSTRUCT_Fx18() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    st = registers[Vx];
 }
 
 // Set I = I + Vx.
