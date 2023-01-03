@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <random>
 #include "../include/chip8.h"
 
 CHIP8::CHIP8() {
@@ -235,6 +236,12 @@ void CHIP8::INSTRUCT_Bnnn() {
 // Set Vx = random byte AND kk.
 // The interpreter generates a random number from 0 to 255, which is then ANDed with the value kk. The results are stored in Vx. See instruction 8xy2 for more information on AND.
 void CHIP8::INSTRUCT_Cxkk() {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,255); // distribution in range [0, 255]
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t byte = instruction & kk;
+    registers[Vx] = byte & dist6(rng);
     
 }
 
@@ -247,19 +254,28 @@ void CHIP8::INSTRUCT_Dxyn() {
 // Skip next instruction if key with the value of Vx is pressed.
 // Checks the keyboard, and if the key corresponding to the value of Vx is currently in the down position, PC is increased by 2.
 void CHIP8::INSTRUCT_Ex9E() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t key_Vx = registers[Vx];
+    if (keypad[key_Vx]) {
+        pc += 2;
+    }
 }
 
 // Skip next instruction if key with the value of Vx is not pressed.
 // Checks the keyboard, and if the key corresponding to the value of Vx is currently in the up position, PC is increased by 2.
 void CHIP8::INSTRUCT_ExA1() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    uint8_t key_Vx = registers[Vx];
+    if (!keypad[key_Vx]) {
+        pc += 2;
+    }
 }
 
 // Set Vx = delay timer value.
 // The value of DT is placed into Vx.
 void CHIP8::INSTRUCT_Fx07() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    registers[Vx] = dt;
 }
 
 // Wait for a key press, store the value of the key in Vx.
