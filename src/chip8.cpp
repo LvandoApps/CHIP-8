@@ -362,7 +362,9 @@ void CHIP8::INSTRUCT_Fx1E() {
 // The value of I is set to the location for the hexadecimal sprite corresponding to the value of Vx. See section 2.4, Display, for more information on the Chip-8 hexadecimal font.
 void CHIP8::INSTRUCT_Fx29() {
     uint8_t Vx = (instruction & x) >> 8u;
-    
+    // Sprites are 5 bytes long and will always start at the sprite start address (0x50), as such the start of any given sprite will be an increment of 5
+    index = SPRITE_START_ADDRESS + (5 * registers[Vx]);
+
 }
 
 // Store BCD representation of Vx in memory locations I, I+1, and I+2.
