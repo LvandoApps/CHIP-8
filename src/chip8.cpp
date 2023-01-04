@@ -373,7 +373,10 @@ void CHIP8::INSTRUCT_Fx33() {
 // Store registers V0 through Vx in memory starting at location I.
 // The interpreter copies the values of registers V0 through Vx into memory, starting at the address in I.
 void CHIP8::INSTRUCT_Fx55() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    for (uint8_t i = 0; i < Vx; i++) {
+        memory[index + i] = registers[i];
+    }
 }
 
 // Read registers V0 through Vx from memory starting at location I.

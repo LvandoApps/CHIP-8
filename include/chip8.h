@@ -63,7 +63,8 @@ class CHIP8 {
         unsigned int n = 0x000F;
         // Reminder that for x, it is the lower 4 bits of the high byte (so bits 8-12), so shift accordingly when using (8).
         // Reminder that for y, it is the upper 4 bits of the low byte (so bits 4-7), so shift accordingly when using (4).
-        unsigned int x, y = 0x0F00;
+        unsigned int x = 0x0F00;
+        unsigned int y = 0x00F0;
         unsigned int kk = 0x00FF;
 
     public:
