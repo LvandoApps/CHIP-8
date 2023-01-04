@@ -2,7 +2,7 @@
 
 // Some const's to prevent magic numbers
 const unsigned int KEY_COUNT = 16;
-const unsigned int MEMORY_SIZE = 4096;
+const unsigned int RAM_SIZE = 4096;
 const unsigned int REGISTER_COUNT = 16;
 const unsigned int STACK_LEVELS = 16;
 const unsigned int VIDEO_HEIGHT = 32;
@@ -15,7 +15,7 @@ class CHIP8 {
     public:
         // All the required components for the CHIP8
         uint16_t registers[REGISTER_COUNT];
-        uint8_t memory[MEMORY_SIZE];
+        uint8_t ram[RAM_SIZE];
         uint16_t index;
         uint16_t pc;
         uint16_t stack[STACK_LEVELS];

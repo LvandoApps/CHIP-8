@@ -7,7 +7,7 @@ CHIP8::CHIP8() {
     pc = START_ADDRESS;
     // Load the fonts 0 through F into the memory of the CHIP8, starting at 0x050 and ending at 0x0A0 (80 bytes)
     for (int i = 0; i < SPRITE_SIZE; i++) {
-        memory[SPRITE_START_ADDRESS + i] = sprite[i];
+        ram[SPRITE_START_ADDRESS + i] = sprite[i];
     }
 }
 
@@ -25,7 +25,7 @@ void CHIP8::loadGame(char const* filename) {
         file.close();
         // Load the now stored contents of the game into the memory of the CHIP8, starting at 0x200 (due to 0x000 - 0x1FF being reserved)
         for (long i = 0; i < filesize; i++) {
-            memory[START_ADDRESS + i] = contents[i];
+            ram[START_ADDRESS + i] = contents[i];
         }
         delete[] contents;
     }
@@ -375,7 +375,7 @@ void CHIP8::INSTRUCT_Fx33() {
 void CHIP8::INSTRUCT_Fx55() {
     uint8_t Vx = (instruction & x) >> 8u;
     for (uint8_t i = 0; i < Vx; i++) {
-        memory[index + i] = registers[i];
+        ram[index + i] = registers[i];
     }
 }
 
@@ -384,7 +384,7 @@ void CHIP8::INSTRUCT_Fx55() {
 void CHIP8::INSTRUCT_Fx65() {
     uint8_t Vx = (instruction & x) >> 8u;
     for (uint8_t i = 0; i < Vx; i++) {
-        registers[i] = memory[index + i];
+        registers[i] = ram[index + i];
     }
 }
 
