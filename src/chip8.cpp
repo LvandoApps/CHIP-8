@@ -382,7 +382,10 @@ void CHIP8::INSTRUCT_Fx55() {
 // Read registers V0 through Vx from memory starting at location I.
 // The interpreter reads values from memory starting at location I into registers V0 through Vx.
 void CHIP8::INSTRUCT_Fx65() {
-    
+    uint8_t Vx = (instruction & x) >> 8u;
+    for (uint8_t i = 0; i < Vx; i++) {
+        registers[i] = memory[index + i];
+    }
 }
 
 int main() {
