@@ -250,6 +250,7 @@ void CHIP8::INSTRUCT_Cxkk() {
 void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t Vy = (instruction & y) >> 4u;
+    // Nibble being uint8_t is fine even though it is realistically uint4_t, however this datatype does not exist
     uint8_t nibble = instruction & n;
 }
 
