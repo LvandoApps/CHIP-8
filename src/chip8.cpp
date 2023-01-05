@@ -252,6 +252,10 @@ void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vy = (instruction & y) >> 4u;
     // Nibble being uint8_t is fine even though it is realistically uint4_t, however this datatype does not exist
     uint8_t nibble = instruction & n;
+
+    // This will ensure the bounds of the display are not breached and will wrap back to 0 if reaching the maximum height/width
+    uint8_t cur_x = registers[Vx] % DISPLAY_HEIGHT;
+    uint8_t cur_y = registers[Vy] % DISPLAY_WIDTH;
 }
 
 // Skip next instruction if key with the value of Vx is pressed.
