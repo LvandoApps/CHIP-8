@@ -250,6 +250,7 @@ void CHIP8::INSTRUCT_Cxkk() {
 void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t Vy = (instruction & y) >> 4u;
+    uint8_t nibble = instruction & n;
 }
 
 // Skip next instruction if key with the value of Vx is pressed.
