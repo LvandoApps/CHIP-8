@@ -256,6 +256,13 @@ void CHIP8::INSTRUCT_Dxyn() {
     // This will ensure the bounds of the display are not breached and will wrap back to 0 if reaching the maximum height/width
     uint8_t cur_x = registers[Vx] % DISPLAY_HEIGHT;
     uint8_t cur_y = registers[Vy] % DISPLAY_WIDTH;
+
+    for (uint8_t i = 0; i < nibble; i++) {
+        uint8_t cur_byte = ram[index + i];
+        for (uint8_t j = 0; j < 8; j++) {
+
+        }
+    }
 }
 
 // Skip next instruction if key with the value of Vx is pressed.
