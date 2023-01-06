@@ -252,7 +252,6 @@ void CHIP8::INSTRUCT_Dxyn() {
     // Reset collision register to 0
     registers[0xF] = 0;
 
-    // This will ensure the bounds of the display are not breached and will wrap back to 0 if reaching the maximum height/width
     uint8_t cur_x = registers[Vx] % DISPLAY_HEIGHT;
     uint8_t cur_y = registers[Vy] % DISPLAY_WIDTH;
 
