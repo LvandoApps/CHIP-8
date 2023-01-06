@@ -250,17 +250,24 @@ void CHIP8::INSTRUCT_Cxkk() {
 void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t Vy = (instruction & y) >> 4u;
-    // Nibble being uint8_t is fine even though it is realistically uint4_t, however this datatype does not exist
-    uint8_t nibble = instruction & n;
+    uint8_t sprite_height = instruction & n;
+    // Reset collision register to 0
+    registers[0xF] = 0;
 
     // This will ensure the bounds of the display are not breached and will wrap back to 0 if reaching the maximum height/width
     uint8_t cur_x = registers[Vx] % DISPLAY_HEIGHT;
     uint8_t cur_y = registers[Vy] % DISPLAY_WIDTH;
 
-    for (uint8_t i = 0; i < nibble; i++) {
-        uint8_t cur_byte = ram[index + i];
-        for (uint8_t j = 0; j < 8; j++) {
-
+    for (uint8_t y_coord = 0; y_coord < sprite_height; y_coord++) {
+        uint8_t cur_byte = ram[index + y_coord];
+        for (uint8_t x_coord = 0; x_coord < 8; x_coord++) {
+            if ((cur_byte & (0x80 >> x_coord)) != 0) {
+                uint32_t* pixel_on_screen = &display[(cur_y + y_coord) * DISPLAY_WIDTH + (cur_x + x_coord)];
+                if (*pixel_on_screen == 0xFFFFFFFF) {
+                    registers[0xF] = 1;
+                }
+                *pixel_on_screen ^= 0xFFFFFFFF;
+            }
         }
     }
 }
