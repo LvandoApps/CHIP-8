@@ -69,7 +69,6 @@ class CHIP8 {
 
     public:
         CHIP8();
-        ~CHIP8();
         void loadGame(char const* filename);
         // All instructions for the CHIP8 below:
         void INSTRUCT_0nnn();
