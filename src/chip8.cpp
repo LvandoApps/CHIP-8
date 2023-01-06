@@ -32,6 +32,196 @@ void CHIP8::loadGame(char const* filename) {
     }
 }
 
+void CHIP8::instructionSequence() {
+    // Fetch the instruction from the loaded rom/game first
+    instruction = (ram[pc] << 8u) | (ram[pc + 1]);
+    // We will have to either increment pc before each instruction or after each instruction, here makes more sense than including it at the end of every instruction
+    pc += 2;
+    // A big switch statement that handles all the instructions decoding/executing, I'm sure there are better ways to do this but this is the easiest to me at the moment
+    // Add some more debugging options here later if needed
+    switch(instruction & 0xF000) {
+        case 0x0000:
+            switch(instruction & 0x00FF) {
+                case 0x00E0:
+                    INSTRUCT_00E0();
+                    break;
+
+                case 0x00EE:
+                    INSTRUCT_00EE();
+                    break;
+                
+                default:
+                    printf("ERROR: Instruction unrecognized with value 0x%X\n", instruction);
+                    exit(EXIT_FAILURE);
+            }
+            break;
+
+        case 0x1000:
+            INSTRUCT_1nnn();
+            break;
+
+        case 0x2000:
+            INSTRUCT_2nnn();
+            break;
+
+        case 0x3000:
+            INSTRUCT_3xkk();
+            break;
+
+        case 0x4000:
+            INSTRUCT_4xkk();
+            break;
+
+        case 0x5000:
+            INSTRUCT_5xy0();
+            break;
+
+        case 0x6000:
+            INSTRUCT_6xkk();
+            break;
+
+        case 0x7000:
+            INSTRUCT_7xkk();
+            break;
+
+        case 0x8000:
+            switch(instruction & 0x000F) {
+                case 0x0000:
+                    INSTRUCT_8xy0();
+                    break;
+
+                case 0x0001:
+                    INSTRUCT_8xy1();
+                    break;
+
+                case 0x0002:
+                    INSTRUCT_8xy2();
+                    break;
+
+                case 0x0003:
+                    INSTRUCT_8xy3();
+                    break;
+
+                case 0x0004:
+                    INSTRUCT_8xy4();
+                    break;
+
+                case 0x0005:
+                    INSTRUCT_8xy5();
+                    break;
+                
+                case 0x0006:
+                    INSTRUCT_8xy6();
+                    break;
+
+                case 0x0007:
+                    INSTRUCT_8xy7();
+                    break;
+
+                case 0x000E:
+                    INSTRUCT_8xyE();
+                    break;
+                
+                default:
+                    printf("ERROR: Instruction unrecognized with value 0x%X\n", instruction);
+                    exit(EXIT_FAILURE);
+            }
+            break;
+        
+        case 0x9000:
+            INSTRUCT_9xy0();
+            break;
+        
+        case 0xA000:
+            INSTRUCT_Annn();
+            break;
+        
+        case 0xB000:
+            INSTRUCT_Bnnn();
+            break;
+
+        case 0xC000:
+            INSTRUCT_Cxkk();
+            break;
+
+        case 0xD000:
+            INSTRUCT_Dxyn();
+
+        case 0xE000:
+            switch(instruction & 0x00FF) {
+                case 0x009E:
+                    INSTRUCT_Ex9E();
+                    break;
+
+                case 0x00A1:
+                    INSTRUCT_ExA1();
+                    break;
+
+                default:
+                    printf("ERROR: Instruction unrecognized with value 0x%X\n", instruction);
+                    exit(EXIT_FAILURE);
+            }
+            break;
+        
+        case 0xF000:
+            switch(instruction & 0x00FF) {
+                case 0x0007:
+                    INSTRUCT_Fx07();
+                    break;
+
+                case 0x000A:
+                    INSTRUCT_Fx0A();
+                    break;
+
+                case 0x0015:
+                    INSTRUCT_Fx15();
+                    break;
+
+                case 0x0018:
+                    INSTRUCT_Fx18();
+                    break;
+
+                case 0x001E:
+                    INSTRUCT_Fx1E();
+                    break;
+
+                case 0x0029:
+                    INSTRUCT_Fx29();
+                    break;
+
+                case 0x0033:
+                    INSTRUCT_Fx33();
+                    break;
+
+                case 0x0055:
+                    INSTRUCT_Fx55();
+                    break;
+
+                case 0x065:
+                    INSTRUCT_Fx65();
+                    break;
+
+                default:
+                    printf("ERROR: Instruction unrecognized with value 0x%X\n", instruction);
+                    exit(EXIT_FAILURE);
+            }
+            break;
+        
+        default:
+            printf("ERROR: Instruction unrecognized with value 0x%X\n", instruction);
+            exit(EXIT_FAILURE);
+    }
+
+    // Finally we decrement the delay timer and/or the sound timer should they be set
+    if (dt > 0) {
+        --dt;
+    }
+
+    if (st > 0) {
+        --st;
+    }
+}
+
 // Clear the display.
 void CHIP8::INSTRUCT_00E0() {
     memset(display, 0, sizeof(display));
