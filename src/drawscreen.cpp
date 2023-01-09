@@ -2,5 +2,5 @@
 #include "../include/drawscreen.h"
 
 int main() {
-    SDL_Init( SDL_INIT_EVERYTHING );
+    SDL_Init(SDL_INIT_VIDEO);
 }
