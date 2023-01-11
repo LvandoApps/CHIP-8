@@ -5,5 +5,7 @@ const unsigned int WINDOW_WIDTH = 1280;
 
 class DRAWSCREEN {
     public:
+        DRAWSCREEN();
+        ~DRAWSCREEN();
 
 };
