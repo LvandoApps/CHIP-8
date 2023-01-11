@@ -1,6 +1,10 @@
 #include <SDL2/SDL.h>
 #include "../include/drawscreen.h"
 
-int main() {
+DRAWSCREEN::DRAWSCREEN() {
     SDL_Init(SDL_INIT_VIDEO);
+}
+
+int main() {
+    
 }
