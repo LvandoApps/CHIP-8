@@ -601,7 +601,3 @@ void CHIP8::INSTRUCT_Fx65() {
         registers[i] = ram[index + i];
     }
 }
-
-int main() {
-    return EXIT_SUCCESS;
-}
