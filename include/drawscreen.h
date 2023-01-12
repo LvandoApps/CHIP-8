@@ -7,7 +7,8 @@ class DRAWSCREEN {
     public:
         SDL_Window* window = nullptr;
         SDL_Renderer* renderer = nullptr;
-        
+        bool sdlWork = true;
+
     public:
         DRAWSCREEN();
         ~DRAWSCREEN();
