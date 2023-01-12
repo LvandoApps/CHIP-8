@@ -17,7 +17,8 @@ DRAWSCREEN::DRAWSCREEN() {
 }
 
 DRAWSCREEN::~DRAWSCREEN() {
-
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }
 
 int main() {
