@@ -14,10 +14,12 @@ DRAWSCREEN::DRAWSCREEN() {
         WINDOW_WIDTH,
         SDL_WINDOW_ALLOW_HIGHDPI
     );
+
 }
 
 DRAWSCREEN::~DRAWSCREEN() {
     SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
     SDL_Quit();
 }
 

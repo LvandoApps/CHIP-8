@@ -12,5 +12,7 @@ class DRAWSCREEN {
     public:
         DRAWSCREEN();
         ~DRAWSCREEN();
+        void Update();
+        bool Process();
 
 };
