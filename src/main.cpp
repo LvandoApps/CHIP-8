@@ -23,7 +23,15 @@ int main(int argc, char* argv[]) {
         DISPLAY_HEIGHT);
     
     if (sdlWork == false) {
-        std::cerr << "ERROR: SDL could not be commenced. Exiting safely.." << std::endl;
+        std::cerr << "ERROR: SDL could not be commenced. Please ensure SDL library is included correctly. Exiting safely.." << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    CHIP8 emulator;
+    bool check_validity = true;
+    emulator.loadGame(rom_file_name, check_validity);
+    if (check_validity == false) {
+        std::cerr << "ERROR: Game could not be loaded. Please ensure the filename you entered is correct. Exiting safely.." << std::endl;
         return EXIT_FAILURE;
     }
 

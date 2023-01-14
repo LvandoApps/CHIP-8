@@ -69,7 +69,7 @@ class CHIP8 {
 
     public:
         CHIP8();
-        void loadGame(char const* filename);
+        void loadGame(char const* filename, bool& check_validity);
         void instructionSequence();
     
     private:

@@ -12,7 +12,7 @@ CHIP8::CHIP8() {
     }
 }
 
-void CHIP8::loadGame(char const* filename) {
+void CHIP8::loadGame(char const* filename, bool& check_validity) {
     // Open the stream to binary and get the file pointer at the end of the file to get size efficiently before beginning
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
     if (file.is_open()) {
@@ -29,7 +29,7 @@ void CHIP8::loadGame(char const* filename) {
         delete[] contents;
     }
     else {
-        std::cout << "Error opening ROM" << std::endl;
+        std::cerr << "Error opening ROM" << std::endl;
     }
 }
 
