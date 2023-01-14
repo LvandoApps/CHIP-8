@@ -6,7 +6,7 @@
 int main(int argc, char* argv[]) {
     if (argc != 4) {
         std::cerr << "The command you entered is not valid, here is the correct command format:" << std::endl;
-        std::cerr << argv[0] << "<Scale> <Delay> <ROMFileName>" << std::endl;
+        std::cerr << argv[0] << " <Scale> <Delay> <ROMFileName>" << std::endl;
         return EXIT_FAILURE;
     }
     int display_scale = std::stoi(argv[1]);
