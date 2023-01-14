@@ -13,21 +13,14 @@ int main(int argc, char* argv[]) {
     int cycle_delay = std::stoi(argv[2]);
     char const* rom_file_name = argv[3];
 
-    bool sdlWork = true;
     // Here is the error, this screen is where to look
-    std::cout << "yes" << std::endl;
     DRAWSCREEN screen(
-        sdlWork,
         "LvandoApps CHIP-8 Emulator",
         DISPLAY_WIDTH * display_scale,
         DISPLAY_HEIGHT * display_scale,
         DISPLAY_WIDTH,
         DISPLAY_HEIGHT);
     
-    if (sdlWork == false) {
-        std::cerr << "ERROR: SDL could not be commenced. Please ensure SDL library is included correctly. Exiting safely.." << std::endl;
-        return EXIT_FAILURE;
-    }
     CHIP8 emulator;
 
     bool check_validity = true;
