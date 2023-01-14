@@ -147,7 +147,8 @@ void CHIP8::InstructionSequence() {
 
         case 0xD000:
             INSTRUCT_Dxyn();
-
+            break;
+            
         case 0xE000:
             switch(instruction & 0x00FF) {
                 case 0x009E:
