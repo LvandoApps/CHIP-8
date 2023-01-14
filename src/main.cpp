@@ -14,6 +14,8 @@ int main(int argc, char* argv[]) {
     char const* rom_file_name = argv[3];
 
     bool sdlWork = true;
+    // Here is the error, this screen is where to look
+    std::cout << "yes" << std::endl;
     DRAWSCREEN screen(
         sdlWork,
         "LvandoApps CHIP-8 Emulator",
@@ -26,7 +28,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "ERROR: SDL could not be commenced. Please ensure SDL library is included correctly. Exiting safely.." << std::endl;
         return EXIT_FAILURE;
     }
-
     CHIP8 emulator;
 
     bool check_validity = true;
@@ -41,6 +42,7 @@ int main(int argc, char* argv[]) {
     bool quit = false;
     
     while(!quit) {
+        std::cout << "yes" << std::endl;
         quit = screen.Process(emulator.keypad);
         auto current_time = std::chrono::high_resolution_clock::now();
         float cur_delay_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - last_cycle_time).count();
