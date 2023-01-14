@@ -29,7 +29,7 @@ void CHIP8::loadGame(char const* filename, bool& check_validity) {
         delete[] contents;
     }
     else {
-        std::cerr << "Error opening ROM" << std::endl;
+        check_validity = false;
     }
 }
 
