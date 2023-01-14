@@ -69,8 +69,8 @@ class CHIP8 {
 
     public:
         CHIP8();
-        void loadGame(char const* filename, bool& check_validity);
-        void instructionSequence();
+        void LoadGame(char const* filename, bool& check_validity);
+        void InstructionSequence();
     
     private:
         // All instructions for the CHIP8 below:

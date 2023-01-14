@@ -28,11 +28,28 @@ int main(int argc, char* argv[]) {
     }
 
     CHIP8 emulator;
+
     bool check_validity = true;
-    emulator.loadGame(rom_file_name, check_validity);
+    emulator.LoadGame(rom_file_name, check_validity);
     if (check_validity == false) {
         std::cerr << "ERROR: Game could not be loaded. Please ensure the filename you entered is correct. Exiting safely.." << std::endl;
         return EXIT_FAILURE;
+    }
+
+    int display_pitch = sizeof(emulator.display[0]) * DISPLAY_WIDTH;
+    auto last_cycle_time = std::chrono::high_resolution_clock::now();
+    bool quit = false;
+    
+    while(!quit) {
+        quit = screen.Process(emulator.keypad);
+        auto current_time = std::chrono::high_resolution_clock::now();
+        float cur_delay_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - last_cycle_time).count();
+
+        if (cur_delay_time > cycle_delay) {
+            last_cycle_time = current_time;
+            emulator.InstructionSequence();
+            screen.Update(emulator.display, display_pitch);
+        }
     }
 
 

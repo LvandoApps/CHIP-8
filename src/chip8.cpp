@@ -12,7 +12,7 @@ CHIP8::CHIP8() {
     }
 }
 
-void CHIP8::loadGame(char const* filename, bool& check_validity) {
+void CHIP8::LoadGame(char const* filename, bool& check_validity) {
     // Open the stream to binary and get the file pointer at the end of the file to get size efficiently before beginning
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
     if (file.is_open()) {
@@ -33,7 +33,7 @@ void CHIP8::loadGame(char const* filename, bool& check_validity) {
     }
 }
 
-void CHIP8::instructionSequence() {
+void CHIP8::InstructionSequence() {
     // Fetch the instruction from the loaded rom/game first
     instruction = (ram[pc] << 8u) | (ram[pc + 1]);
     // We will have to either increment pc before each instruction or after each instruction, here makes more sense than including it at the end of every instruction
