@@ -3,9 +3,7 @@
 #include "../include/drawscreen.h"
 
 DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
-    std::cout << "yes" << std::endl;
     SDL_Init(SDL_INIT_VIDEO);
-    std::cout << "yes" << std::endl;
     window = SDL_CreateWindow(
         title,
         SDL_WINDOWPOS_CENTERED,
