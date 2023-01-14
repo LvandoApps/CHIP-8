@@ -10,7 +10,7 @@ class DRAWSCREEN {
         bool sdlWork = true;
 
     public:
-        DRAWSCREEN();
+        DRAWSCREEN(char const* title, int screenHeight, int screenWidth, int textureHeight, int textureWidth);
         ~DRAWSCREEN();
         void Update();
         bool Process();
