@@ -11,6 +11,6 @@ class DRAWSCREEN {
         DRAWSCREEN(char const* title, int screenHeight, int screenWidth, int textureHeight, int textureWidth);
         ~DRAWSCREEN();
         void Update(void const* buffer, int pitch);
-        bool Process();
+        bool Process(uint8_t* keys);
 
 };
