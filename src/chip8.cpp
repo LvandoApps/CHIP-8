@@ -7,7 +7,7 @@
 CHIP8::CHIP8() {
     pc = START_ADDRESS;
     // Load the fonts 0 through F into the memory of the CHIP8, starting at 0x050 and ending at 0x0A0 (80 bytes)
-    for (int i = 0; i < SPRITE_SIZE; i++) {
+    for (unsigned int i = 0; i < SPRITE_SIZE; i++) {
         ram[SPRITE_START_ADDRESS + i] = sprite[i];
     }
 }
