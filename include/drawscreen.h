@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "../src/include/SDL2/SDL.h"
 
 class DRAWSCREEN {
     public:
