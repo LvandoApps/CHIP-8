@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include "../include/drawscreen.h"
 
-DRAWSCREEN::DRAWSCREEN(char const* title, int screen_height, int screen_width, int texture_height, int texture_width) {
+DRAWSCREEN::DRAWSCREEN(bool& sdlWork, char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         sdlWork = false;
     }
@@ -10,8 +10,8 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_height, int screen_width, i
         title,
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        screen_height,
         screen_width,
+        screen_height,
         SDL_WINDOW_ALLOW_HIGHDPI
     );
     renderer = SDL_CreateRenderer(
@@ -23,8 +23,8 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_height, int screen_width, i
         renderer,
         SDL_PIXELFORMAT_RGBA8888,
         SDL_TEXTUREACCESS_STREAMING,
-        texture_height,
-        texture_width
+        texture_width,
+        texture_height
     );
 
 }

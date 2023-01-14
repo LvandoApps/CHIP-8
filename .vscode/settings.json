@@ -45,6 +45,22 @@
         "xutility": "cpp",
         "algorithm": "cpp",
         "random": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "functional": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "sstream": "cpp",
+        "cinttypes": "cpp"
     }
 }
