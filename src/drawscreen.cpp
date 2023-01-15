@@ -3,14 +3,14 @@
 #include "../include/drawscreen.h"
 
 DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
-    std::cout << SDL_Init(SDL_INIT_VIDEO) << std::endl;
+    SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow(
         title,
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         screen_width,
         screen_height,
-        SDL_WINDOW_ALLOW_HIGHDPI
+        SDL_WINDOW_RESIZABLE
     );
     renderer = SDL_CreateRenderer(
         window, 
