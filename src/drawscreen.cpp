@@ -4,7 +4,7 @@
 
 DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
     std::cout << "test" << std::endl;
-    SDL_Init(SDL_INIT_VIDEO);
+    std::cout << SDL_Init(SDL_INIT_VIDEO) << std::endl;
     window = SDL_CreateWindow(
         title,
         SDL_WINDOWPOS_CENTERED,
