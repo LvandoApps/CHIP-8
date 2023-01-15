@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
     bool quit = false;
     
     while(!quit) {
-        std::cout << "yes" << std::endl;
         quit = screen.Process(emulator.keypad);
         auto current_time = std::chrono::high_resolution_clock::now();
         float cur_delay_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - last_cycle_time).count();
