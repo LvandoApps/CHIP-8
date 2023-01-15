@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../src/include/SDL2/SDL.h"
+#include <SDL/SDL.h>
 
 int main() {
     std::cout << "yes" << std::endl;

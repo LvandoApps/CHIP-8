@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../src/include/SDL2/SDL.h"
+#include <SDL/SDL.h>
 #include "../include/drawscreen.h"
 
 DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
