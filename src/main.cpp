@@ -1,8 +1,9 @@
 #include <iostream>
 #include <chrono>
+#include <string>
 #include "../include/drawscreen.h"
 #include "../include/chip8.h"
-#include "../src/include/SDL2/SDL.h"
+#include <SDL2/SDL.h>
 
 int main(int argc, char* argv[]) {
     if (argc != 4) {
