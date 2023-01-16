@@ -441,21 +441,22 @@ void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t Vy = (instruction & y) >> 4u;
     uint8_t sprite_height = instruction & n;
-    uint8_t cur_x = registers[Vx];
-    uint8_t cur_y = registers[Vy];
-    uint8_t pixel;
+
+    uint8_t cur_x = registers[Vx] % DISPLAY_WIDTH;
+    uint8_t cur_y = registers[Vy] % DISPLAY_HEIGHT;
 
     // Reset collision register to 0
     registers[0xF] = 0;
 
     for (uint8_t y_coord = 0; y_coord < sprite_height; y_coord++) {
-        pixel = ram[index + y_coord];
+        uint8_t cur_byte = ram[index + y_coord];
         for (uint8_t x_coord = 0; x_coord < 8; x_coord++) {
-            if ((pixel & (0x80 >> x_coord)) != 0) {
-                if (display[cur_y + y_coord][cur_x + x_coord] == 1) {
+            uint32_t* pixel_on_screen = &display[(cur_y + y_coord) * DISPLAY_WIDTH + (cur_x + x_coord)];
+            if ((cur_byte & (0x80 >> x_coord))) {
+                if (*pixel_on_screen == 0xFFFFFFFF) {
                     registers[0xF] = 1;
                 }
-                display[cur_y + y_coord][cur_x + x_coord] ^= 1;
+                *pixel_on_screen ^= 0xFFFFFFFF;
             }
         }
     }
