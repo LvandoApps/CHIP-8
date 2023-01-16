@@ -24,13 +24,15 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, i
         texture_width,
         texture_height
     );
-
 }
 
 DRAWSCREEN::~DRAWSCREEN() {
     SDL_DestroyTexture(texture);
+    texture = nullptr;
     SDL_DestroyRenderer(renderer);
+    renderer = nullptr;
     SDL_DestroyWindow(window);
+    window = nullptr;
     SDL_Quit();
 }
 
