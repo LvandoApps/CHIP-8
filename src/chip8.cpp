@@ -442,6 +442,7 @@ void CHIP8::INSTRUCT_Dxyn() {
     uint8_t Vy = (instruction & y) >> 4u;
     uint8_t sprite_height = instruction & n;
 
+    // This will ensure textures are wrapped back onto the screen should they go outside the bounds (i.e reset to 0 when reaching the maximum)
     uint8_t cur_x = registers[Vx] % DISPLAY_WIDTH;
     uint8_t cur_y = registers[Vy] % DISPLAY_HEIGHT;
 
