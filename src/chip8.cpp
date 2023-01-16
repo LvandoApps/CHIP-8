@@ -448,14 +448,17 @@ void CHIP8::INSTRUCT_Dxyn() {
     // Reset collision register to 0
     registers[0xF] = 0;
 
+    // The loop that continues to draw sprites onto the screen, works in tangent with SDL functions to continuously update textures and allow the game to be displayed correctly
     for (uint8_t y_coord = 0; y_coord < sprite_height; y_coord++) {
-        uint8_t cur_byte = ram[index + y_coord];
+        uint8_t pixel_on_sprite = ram[index + y_coord];
         for (uint8_t x_coord = 0; x_coord < 8; x_coord++) {
             uint32_t* pixel_on_screen = &display[(cur_y + y_coord) * DISPLAY_WIDTH + (cur_x + x_coord)];
-            if ((cur_byte & (0x80 >> x_coord))) {
+            if ((pixel_on_sprite & (0x80 >> x_coord))) {
+                // If the sprite pixel is on at the same time the screen pixel is on, then there is a collision
                 if (*pixel_on_screen == 0xFFFFFFFF) {
                     registers[0xF] = 1;
                 }
+                // We then XOR the sprite pixel onto the screen as requested
                 *pixel_on_screen ^= 0xFFFFFFFF;
             }
         }
