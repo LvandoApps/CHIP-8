@@ -6,6 +6,8 @@
 #include <SDL2/SDL.h>
 
 int main(int argc, char* argv[]) {
+    // Checks command input to ensure command is valid, as well as allows user options for window modification (as well as game speed), via display_scale and cycle_delay respectively.
+    // Including ROMFileName is essential, could potentially make the other two options non essential and give a default option (include later).
     if (argc != 4) {
         std::cerr << "The command you entered is not valid, here is the correct command format:" << std::endl;
         std::cerr << argv[0] << " <Scale> <Delay> <ROMFileName>" << std::endl;
@@ -15,7 +17,6 @@ int main(int argc, char* argv[]) {
     int cycle_delay = std::stoi(argv[2]);
     char const* rom_file_name = argv[3];
 
-    // Here is the error, this screen is where to look
     DRAWSCREEN screen(
         "LvandoApps CHIP-8 Emulator",
         DISPLAY_WIDTH * display_scale,
@@ -25,6 +26,7 @@ int main(int argc, char* argv[]) {
     
     CHIP8 emulator;
 
+    // Load the ROM file and ensure the game has loaded correctly, if it hasn't then throw an error and exit safely
     bool check_validity = true;
     emulator.LoadGame(rom_file_name, check_validity);
     if (check_validity == false) {
