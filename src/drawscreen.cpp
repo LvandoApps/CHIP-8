@@ -10,7 +10,7 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, i
         SDL_WINDOWPOS_CENTERED,
         screen_width,
         screen_height,
-        SDL_WINDOW_RESIZABLE
+        SDL_WINDOW_SHOWN
     );
     renderer = SDL_CreateRenderer(
         window, 
