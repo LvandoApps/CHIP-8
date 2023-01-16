@@ -21,7 +21,7 @@ class CHIP8 {
         uint16_t stack[STACK_LEVELS];
         uint8_t dt;
         uint8_t st;
-        uint32_t display[DISPLAY_WIDTH * DISPLAY_HEIGHT];
+        uint32_t display[DISPLAY_HEIGHT][DISPLAY_WIDTH];
         uint8_t keypad[KEY_COUNT];
         uint8_t sp;
         uint16_t instruction;
