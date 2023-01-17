@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     char const* rom_file_name = argv[3];
 
     DRAWSCREEN screen(
-        "LvandoApps CHIP-8 Emulator",
+        "CHIP-8 Emulator",
         DISPLAY_WIDTH * display_scale,
         DISPLAY_HEIGHT * display_scale,
         DISPLAY_WIDTH,
