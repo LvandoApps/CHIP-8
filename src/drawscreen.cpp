@@ -24,6 +24,9 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, i
         texture_width,
         texture_height
     );
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
 }
 
 DRAWSCREEN::~DRAWSCREEN() {
