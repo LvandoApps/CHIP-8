@@ -437,7 +437,7 @@ void CHIP8::INSTRUCT_8xyE() {
     else {
         registers[0xF] = 0;
     }
-    registers[Vx] <<= 1;
+    registers[Vx] = registers[Vx] << 1;
 }
 
 // Skip next instruction if Vx != Vy.
