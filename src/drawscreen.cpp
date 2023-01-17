@@ -3,6 +3,8 @@
 #include "../include/drawscreen.h"
 
 DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, int texture_width, int texture_height) {
+    // Here we initialise the window, renderer, as well as texture. Using texture is a better alternative than just using the renderer
+    // as it will allow me to update and draw the pixel in a single step later on rather than updating the buffer THEN drawing the pixels to the screen
     SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow(
         title,
@@ -24,24 +26,30 @@ DRAWSCREEN::DRAWSCREEN(char const* title, int screen_width, int screen_height, i
         texture_width,
         texture_height
     );
+    // We set the renderer to a default of black, clear whatever render is there (if any), and present the black screen. This isn't really needed
+    // but is more of an insurance policy if something for some reason went wrong
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 }
 
 DRAWSCREEN::~DRAWSCREEN() {
+    // Here we destroy everything and quit, no need to reset values as this is done in the headerfile on program startup
     SDL_DestroyTexture(texture);
-    texture = nullptr;
     SDL_DestroyRenderer(renderer);
-    renderer = nullptr;
     SDL_DestroyWindow(window);
-    window = nullptr;
     SDL_Quit();
 }
 
 void DRAWSCREEN::Update(void const* buffer, int pitch) {
+    // Set the texture to be white and ensure no blending before updating the texture (i.e putting the pixel onto the screen
+    // after being informed by Dxyn instruction)
     SDL_SetTextureColorMod(texture, 255, 255, 255);
     SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_NONE);
+    // Now we update the contents of a texture with new pixel data from Dxyn, clear current rendering target
+    // with black (as defined before), copy a portion of the texture containing the new pixel data to the current rendering
+    // target, then finally update the screen with any rendering that was done, making the pixel data
+    // now visible on the screen
     SDL_UpdateTexture(texture, nullptr, buffer, pitch);
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture, nullptr, nullptr);
