@@ -1,7 +1,9 @@
 # CHIP-8
-Essentially the "hello world" of emulation.
+Essentially the "hello world" of emulation and a project I did to learn more about bitwise operations, assembly, and more. Code is heavily inspired by Austin Morlan's tutorial on building the CHIP-8, so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
 
-Below are the main references I used to complete the project. If you are interested in learning more about the CHIP-8, or you would like some guidance on how to get started making your own (and my excellent commenting didn't guide you well enough), these sites will be all you need for the most part.
+https://austinmorlan.com/posts/chip8_emulator/
+
+Below are the other main references I used to complete the project. I would highly recommend checking these out as well for general learning, as well as completing the instructions, as they helped me out a lot.
 
 http://devernay.free.fr/hacks/chip8/C8TECH10.HTM
 
