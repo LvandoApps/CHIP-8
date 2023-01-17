@@ -18,7 +18,7 @@ https://tobiasvl.github.io/blog/write-a-chip-8-emulator/
 ### Inspired Code:
 The process in which keys presses are stored within the SDL sequence was a very intelligent and easy way of recording what keypresses are done by the user playing the ROM, and then translating these to the CHIP-8 keypad. As such I used this same method for myself (named 'Process') within my drawscreen.cpp file without much modification. I also liked making use of the instructor and destructor to initialise and destroy required functions rather than just using seperate methods to do so, and while this is obvious in foresight, I did end up getting this idea from the tutorial code.
 
-On top of this I liked the idea of having parameters to decide the screen scale, as well as the game speed, and also liked how the main loop was setup via a while loop that depends on the result of the aforementioned 'Process' method, as such all the code involving these ideas within my main.cpp file was gained from the tutorial.
+On top of this I liked the idea of having parameters to decide the screen scale, as well as the game speed, and also liked how the main loop was setup via a while loop that depends on the result of the aforementioned 'Process' method, as such all the code involving these ideas within my main.cpp file (more or less any piece of code that connected the main loop with my SDL methods) was gained from the tutorial.
 
 Aside from this, all other code was written myself and invoked my own creativity, or was written due to information gained from one of the other two links I presented. 
 
