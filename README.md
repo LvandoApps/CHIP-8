@@ -1,5 +1,5 @@
 # CHIP-8
-Essentially the "hello world" of emulation and a project I did to learn more about bitwise operations, assembly, as well as hone some general C++ skills. Some of the code I used to complete this project is heavily inspired by Austin Morlan's tutorial on building the CHIP-8 (specifically a lot of the SDL section (drawscreen.cpp) and the main loop (main.cpp)), so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
+Essentially the "hello world" of emulation and a project I did to learn more about bitwise operations, assembly, as well as hone some general C++ skills. Some of the code I used to complete this project is heavily inspired by Austin Morlan's tutorial on building the CHIP-8 (the specifics are outlined at the bottom of this file), so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
 
 https://austinmorlan.com/posts/chip8_emulator/
 
