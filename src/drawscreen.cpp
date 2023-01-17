@@ -40,6 +40,8 @@ DRAWSCREEN::~DRAWSCREEN() {
 }
 
 void DRAWSCREEN::Update(void const* buffer, int pitch) {
+    SDL_SetTextureColorMod(texture, 255, 255, 255);
+    SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_NONE);
     SDL_UpdateTexture(texture, nullptr, buffer, pitch);
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture, nullptr, nullptr);

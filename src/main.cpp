@@ -37,6 +37,8 @@ int main(int argc, char* argv[]) {
     int display_pitch = sizeof(emulator.display[0]) * DISPLAY_WIDTH;
     auto last_cycle_time = std::chrono::high_resolution_clock::now();
     bool quit = false;
+    // This is a temporary solution until 00E0 is fixed
+    memset(emulator.display, 0, sizeof(emulator.display));
     
     while(!quit) {
         quit = screen.Process(emulator.keypad);
