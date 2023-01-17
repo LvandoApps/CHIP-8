@@ -1,6 +1,6 @@
 # CHIP-8
 ### How to Run:
-./emulator <Scale> <Delay> <ROMFileName>
+./emulator Scale Delay ROMFileName \n
 Where:
 - Scale: Is an int that determines the size of the screen. Have a play around with it and see what you like, I generally use 20.
 - Delay: Is an int that determines the speed of the game. Again, have a play around with it for each game and see what you prefer, as each game feels nicer at a different speed.
