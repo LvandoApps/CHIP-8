@@ -3,7 +3,7 @@
 ./emulator Scale Delay ROMFileName
 - Scale: Is an int that determines the size of the screen. Have a play around with it and see what you like, I generally use 20.
 - Delay: Is an int that determines the speed of the game. Again, have a play around with it for each game and see what you prefer, as each game feels nicer at a different speed.
-- ROMFileName: Is a string for the name of the file you want to use as a ROM. Check this repository to find examples of ROMs you can use (ensure they are .ch8) https://github.com/dmatlack/chip8/tree/master/roms/games
+- ROMFileName: Is a string for the name of the file you want to use as a ROM. Check this repository to find examples of ROMs you can use (ensure they are .ch8): https://github.com/dmatlack/chip8/tree/master/roms/games
 
 ### Overview:
 Essentially the "hello world" of emulation and a project I did to develop my skills in reverse engineering, low-level programming, optimisation, and working with unfamiliar libraries/technologies. Some of the code I used to complete this project is heavily inspired by Austin Morlan's own CHIP-8 emulator (the specifics are outlined at the bottom of this file), so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
