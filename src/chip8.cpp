@@ -402,20 +402,15 @@ void CHIP8::INSTRUCT_8xy5() {
     else {
         registers[0xF] = 0;
     }
-    registers[Vx] -= registers[Vy];
+    registers[Vx] = registers[Vx] - registers[Vy];
 }
 
 // Set Vx = Vx SHR 1.
 // If the least-significant bit of Vx is 1, then VF is set to 1, otherwise 0. Then Vx is divided by 2.
 void CHIP8::INSTRUCT_8xy6() {
     uint8_t Vx = (instruction & x) >> 8u;
-    if ((registers[Vx] & 1u) == 1) {
-        registers[0xF] = 1;
-    }
-    else {
-        registers[0xF] = 0;
-    }
-    registers[Vx] >>= 1;
+    registers[0xF] = registers[Vx] & 0x1;
+    registers[Vx] = registers[Vx] >> 1;
 }
 
 // Set Vx = Vy - Vx, set VF = NOT borrow.
