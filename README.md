@@ -22,4 +22,4 @@ On top of this I liked the idea of having parameters to decide the screen scale,
 
 Aside from this, all other code was written myself and invoked my own creativity, or was written due to information gained from one of the other two links I presented. 
 
-The CHIP-8 is quite a static project in which most of its architecture is already predefined such that there is generally only one accepted way of writing most operations and defining variables when it comes to the actual CHIP-8 itself, however I have outlined to the best of my ability the areas within my project that were heavily inspired by MIT licensed code so as to stay consistent with the guidelines of the MIT license.
+The CHIP-8 is quite a static project in which most of its architecture is already predefined such that there is generally only one accepted way of writing most operations and defining variables when it comes to the actual CHIP-8 itself, however I have outlined to the best of my ability the areas within my project that were heavily inspired by MIT licensed code so as to stay consistent with the guidelines of the MIT license (included in the repository).
