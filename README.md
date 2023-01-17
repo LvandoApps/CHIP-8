@@ -6,7 +6,7 @@
 - ROMFileName: Is a string for the name of the file you want to use as a ROM. I will include a folder of all ROMs I have found to be used, so just pick one and use that (ensure the path to it is correct).
 
 ### Overview:
-Essentially the "hello world" of emulation and a project I did to learn more about bitwise operations, assembly, as well as hone some general C++ skills. Some of the code I used to complete this project is heavily inspired by Austin Morlan's own CHIP-8 emulator (the specifics are outlined at the bottom of this file), so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
+Essentially the "hello world" of emulation and a project I did to develop my skills in reverse engineering, low-level programming, and optimisation. On top of this I could develop my general skills in C++, library management, and documentation. Some of the code I used to complete this project is heavily inspired by Austin Morlan's own CHIP-8 emulator (the specifics are outlined at the bottom of this file), so be sure to check it out, as well as his other projects on emulation, if you are interested in this area in general (link below).
 
 https://code.austinmorlan.com/austin/2019-chip8-emulator
 
