@@ -276,16 +276,26 @@ void CHIP8::INSTRUCT_00EE() {
 // The interpreter sets the program counter to nnn.
 void CHIP8::INSTRUCT_1nnn() {
     uint16_t cur_address = instruction & nnn;
-    pc = cur_address;
+    if (cur_address >= 0x000 && cur_address <= 0xFFF) {
+        pc = cur_address;
+    }
+    else {
+        std::cerr << "Out of range error at 1nnn!" << std::endl;
+    }
 }
 
 // Call subroutine at nnn.
 // The interpreter increments the stack pointer, then puts the current PC on the top of the stack. The PC is then set to nnn.
 void CHIP8::INSTRUCT_2nnn() {
     uint16_t cur_address = instruction & nnn;
-    stack[sp] = pc;
-    sp++;
-    pc = cur_address;
+    if (cur_address >= 0x000 && cur_address <= 0xFFF) {
+        stack[sp] = pc;
+        sp++;
+        pc = cur_address;
+    }
+    else {
+        std::cerr << "Out of range error at 2nnn!" << std::endl;
+    }
 }
 
 // Skip next instruction if Vx = kk.
@@ -449,14 +459,24 @@ void CHIP8::INSTRUCT_9xy0() {
 // The value of register I is set to nnn.
 void CHIP8::INSTRUCT_Annn() {
     uint16_t cur_address = instruction & nnn;
-    index = cur_address;
+    if (cur_address >= 0x000 && cur_address <= 0xFFF) {
+        index = cur_address;
+    }
+    else {
+        std::cerr << "Out of range error at Annn!" << std::endl;
+    }
 }
 
 // Jump to location nnn + V0.
 // The program counter is set to nnn plus the value of V0.
 void CHIP8::INSTRUCT_Bnnn() {
     uint16_t cur_address = instruction & nnn;
-    pc = cur_address + registers[0x0];
+    if (cur_address >= 0x000 && cur_address <= 0xFFF) {
+        pc = cur_address + registers[0x0];
+    }
+    else {
+        std::cerr << "Out of range error at Bnnn!" << std::endl;
+    }
 }
 
 // Set Vx = random byte AND kk.
@@ -630,8 +650,14 @@ void CHIP8::INSTRUCT_Fx33() {
 // The interpreter copies the values of registers V0 through Vx into memory, starting at the address in I.
 void CHIP8::INSTRUCT_Fx55() {
     uint8_t Vx = (instruction & x) >> 8u;
-    for (uint8_t i = 0; i < Vx; i++) {
-        ram[index + i] = registers[i];
+    if (index + Vx < 0x000 || index + Vx > 0xFFF) {
+        std::cerr << "Out of range error at Fx55!" << std::endl;
+    }
+    else {
+        for (uint8_t i = 0; i <= Vx; i++) {
+            ram[index + i] = registers[i];
+        }
+        index += Vx + 1;
     }
 }
 
@@ -639,7 +665,13 @@ void CHIP8::INSTRUCT_Fx55() {
 // The interpreter reads values from memory starting at location I into registers V0 through Vx.
 void CHIP8::INSTRUCT_Fx65() {
     uint8_t Vx = (instruction & x) >> 8u;
-    for (uint8_t i = 0; i < Vx; i++) {
-        registers[i] = ram[index + i];
+    if (index + Vx < 0x000 || index + Vx > 0xFFF) {
+        std::cerr << "Out of range error at Fx65!" << std::endl;
+    }
+    else {
+        for (uint8_t i = 0; i <= Vx; i++) {
+            registers[i] = ram[index + i];
+        }
+        index += x + 1;
     }
 }
