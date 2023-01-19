@@ -17,7 +17,7 @@ http://devernay.free.fr/hacks/chip8/C8TECH10.HTM
 https://tobiasvl.github.io/blog/write-a-chip-8-emulator/
 
 ### Requirements:
-- I have included the required files of the SDL library into the project to make the process of using the SDL library much easier for users who would like to demonstrate this code for themselves, however you will have to include the "include" folder of the SDL library into your IDE's include path (this will be src/include). Once this is done, the code should run fine as long as all other requirements are met. If not, then you will have to install SDL for yourself.
+- I have included the required files of the SDL library into the project to make the process of using the SDL library much easier for users who would like to use this code for themselves, however you will have to include the "include" folder of the SDL library into your IDE's include path (this will be src/include). Once this is done, the code should run fine as long as all other requirements are met. If not, then you will have to install and setup SDL for yourself, I got my version from this link: https://github.com/libsdl-org/SDL/releases/tag/release-2.26.2.
 - Ensure that you are using a compiler that can compile C++ code.
 - This project was built with Windows, as such this is the preferred OS, however it should run just fine on Linux (I had issues however this was I believe only due to WSL conflicts with SDL due to the nature of how SDL communicates with hardware, it should work fine on a proper Linux machine). I am unsure whether or not this will work on Mac.
 
