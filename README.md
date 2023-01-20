@@ -1,8 +1,9 @@
 # CHIP-8
 ### How to Run:
-./emulator Scale Delay ROMFileName
+./emulator Scale Delay DebugOnOff ROMFileName
 - Scale: Is an int that determines the size of the screen. Have a play around with it and see what you like, I generally use 20.
 - Delay: Is an int that determines the speed of the game. Again, have a play around with it for each game and see what you prefer, as each game feels nicer at a different speed.
+- DebugOnOff: Is an int that determines whether debug mode is on or off. Enter 0 for off, enter 1 for on.
 - ROMFileName: Is a string for the name of the file you want to use as a ROM. Check this repository to find examples of ROMs you can use (ensure they are .ch8): https://github.com/dmatlack/chip8/tree/master/roms/games
 
 ### Overview:
