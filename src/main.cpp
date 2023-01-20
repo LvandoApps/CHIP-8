@@ -34,17 +34,20 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
+    // Create a pitch to measure the distance between each pixel based on the width
+    // of the display and also create a means of recording the last cycle time such that
+    // game speed can be controlled
     int display_pitch = sizeof(emulator.display[0]) * DISPLAY_WIDTH;
     auto last_cycle_time = std::chrono::high_resolution_clock::now();
     bool quit = false;
-    // This is a temporary solution until 00E0 is fixed
-    memset(emulator.display, 0, sizeof(emulator.display));
     
+    // While the game is still running, do all the following
     while(!quit) {
         quit = screen.Process(emulator.keypad);
         auto current_time = std::chrono::high_resolution_clock::now();
         float cur_delay_time = std::chrono::duration<float, std::chrono::milliseconds::period>(current_time - last_cycle_time).count();
 
+        // Once the delay is over, we commence instruction and update the screen
         if (cur_delay_time > cycle_delay) {
             last_cycle_time = current_time;
             emulator.InstructionSequence();
