@@ -17,10 +17,10 @@ int main(int argc, char* argv[]) {
     int display_scale = std::stoi(argv[1]);
     int cycle_delay = std::stoi(argv[2]);
     int debug = std::stoi(argv[3]);
-    if (debug = 0) {
+    if (debug == 0) {
         emulator.debug_option = false;
     }
-    else if (debug = 1) {
+    else if (debug == 1) {
         emulator.debug_option = true;
     }
     char const* rom_file_name = argv[4];
