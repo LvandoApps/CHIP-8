@@ -338,7 +338,6 @@ void CHIP8::INSTRUCT_00E0() {
 void CHIP8::INSTRUCT_00EE() {
     sp--;
     pc = stack[sp];
-    std::cout << pc << std::endl;
 }
 
 // Jump to location nnn.
@@ -411,7 +410,7 @@ void CHIP8::INSTRUCT_6xkk() {
 void CHIP8::INSTRUCT_7xkk() {
     uint8_t Vx = (instruction & x) >> 8u;
     uint8_t byte = instruction & kk;
-    registers[Vx] += byte;
+    registers[Vx] = registers[Vx] + byte;
 }
 
 // Set Vx = Vy.
