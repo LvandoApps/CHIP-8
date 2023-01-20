@@ -13,6 +13,8 @@ const unsigned int SPRITE_START_ADDRESS = 0x50;
 
 class CHIP8 {
     public:
+        // Bool for debug
+        bool debug_option;
         // All the required components for the CHIP8
         uint16_t registers[REGISTER_COUNT];
         uint8_t ram[RAM_SIZE];

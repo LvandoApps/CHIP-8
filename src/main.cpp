@@ -8,14 +8,22 @@
 int main(int argc, char* argv[]) {
     // Checks command input to ensure command is valid, as well as allows user options for window modification (as well as game speed), via display_scale and cycle_delay respectively.
     // Including ROMFileName is essential, could potentially make the other two options non essential and give a default option (include later).
-    if (argc != 4) {
+    if (argc != 5) {
         std::cerr << "The command you entered is not valid, here is the correct command format:" << std::endl;
-        std::cerr << argv[0] << " <Scale> <Delay> <ROMFileName>" << std::endl;
+        std::cerr << argv[0] << " <Scale> <Delay> <DebugOnOff> <ROMFileName>" << std::endl;
         return EXIT_FAILURE;
     }
+    CHIP8 emulator;
     int display_scale = std::stoi(argv[1]);
     int cycle_delay = std::stoi(argv[2]);
-    char const* rom_file_name = argv[3];
+    int debug = std::stoi(argv[3]);
+    if (debug = 0) {
+        emulator.debug_option = false;
+    }
+    else if (debug = 1) {
+        emulator.debug_option = true;
+    }
+    char const* rom_file_name = argv[4];
 
     DRAWSCREEN screen(
         "CHIP-8 Emulator",
@@ -23,8 +31,6 @@ int main(int argc, char* argv[]) {
         DISPLAY_HEIGHT * display_scale,
         DISPLAY_WIDTH,
         DISPLAY_HEIGHT);
-    
-    CHIP8 emulator;
 
     // Load the ROM file and ensure the game has loaded correctly, if it hasn't then throw an error and exit safely
     bool check_validity = true;

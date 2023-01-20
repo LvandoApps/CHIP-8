@@ -47,12 +47,16 @@ void CHIP8::InstructionSequence() {
             switch(instruction & 0x00FF) {
                 case 0x00E0:
                     INSTRUCT_00E0();
-                    std::cout << "Instruct 00E0 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 00E0 called" << std::endl;
+                    }
                     break;
 
                 case 0x00EE:
                     INSTRUCT_00EE();
-                    std::cout << "Instruct 00EE called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 00EE called" << std::endl;
+                    }
                     break;
                 
                 default:
@@ -63,84 +67,116 @@ void CHIP8::InstructionSequence() {
 
         case 0x1000:
             INSTRUCT_1nnn();
-            std::cout << "Instruct 1nnn called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 1nnn called" << std::endl;
+            }
             break;
 
         case 0x2000:
             INSTRUCT_2nnn();
-            std::cout << "Instruct 2nnn called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 2nnn called" << std::endl;
+            }
             break;
 
         case 0x3000:
             INSTRUCT_3xkk();
-            std::cout << "Instruct 3xkk called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 3xkk called" << std::endl;
+            }
             break;
 
         case 0x4000:
             INSTRUCT_4xkk();
-            std::cout << "Instruct 4xkk called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 4xkk called" << std::endl;
+            }
             break;
 
         case 0x5000:
             INSTRUCT_5xy0();
-            std::cout << "Instruct 5xy0 called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 5xy0 called" << std::endl;
+            }
             break;
 
         case 0x6000:
             INSTRUCT_6xkk();
-            std::cout << "Instruct 6xkk called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 6xkk called" << std::endl;
+            }
             break;
 
         case 0x7000:
             INSTRUCT_7xkk();
-            std::cout << "Instruct 7xkk called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 7xkk called" << std::endl;
+            }
             break;
 
         case 0x8000:
             switch(instruction & 0x000F) {
                 case 0x0000:
                     INSTRUCT_8xy0();
-                    std::cout << "Instruct 8xy0 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy0 called" << std::endl;
+                    }
                     break;
 
                 case 0x0001:
                     INSTRUCT_8xy1();
-                    std::cout << "Instruct 8xy1 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy1 called" << std::endl;
+                    }
                     break;
 
                 case 0x0002:
                     INSTRUCT_8xy2();
-                    std::cout << "Instruct 8xy2 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy2 called" << std::endl;
+                    }
                     break;
 
                 case 0x0003:
                     INSTRUCT_8xy3();
-                    std::cout << "Instruct 8xy3 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy3 called" << std::endl;
+                    }
                     break;
 
                 case 0x0004:
                     INSTRUCT_8xy4();
-                    std::cout << "Instruct 8xy4 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy4 called" << std::endl;
+                    }
                     break;
 
                 case 0x0005:
                     INSTRUCT_8xy5();
-                    std::cout << "Instruct 8xy5 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy5 called" << std::endl;
+                    }
                     break;
                 
                 case 0x0006:
                     INSTRUCT_8xy6();
-                    std::cout << "Instruct 8xy6 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy6 called" << std::endl;
+                    }
                     break;
 
                 case 0x0007:
                     INSTRUCT_8xy7();
-                    std::cout << "Instruct 8xy7 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xy7 called" << std::endl;
+                    }
                     break;
 
                 case 0x000E:
                     INSTRUCT_8xyE();
-                    std::cout << "Instruct 8xyE called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct 8xyE called" << std::endl;
+                    }
                     break;
                 
                 default:
@@ -151,39 +187,53 @@ void CHIP8::InstructionSequence() {
         
         case 0x9000:
             INSTRUCT_9xy0();
-            std::cout << "Instruct 9xy0 called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct 9xy0 called" << std::endl;
+            }
             break;
         
         case 0xA000:
             INSTRUCT_Annn();
-            std::cout << "Instruct Annn called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct Annn called" << std::endl;
+            }
             break;
         
         case 0xB000:
             INSTRUCT_Bnnn();
-            std::cout << "Instruct Bnnn called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct Bnnn called" << std::endl;
+            }
             break;
 
         case 0xC000:
             INSTRUCT_Cxkk();
-            std::cout << "Instruct Cxkk called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct Cxkk called" << std::endl;
+            }
             break;
 
         case 0xD000:
             INSTRUCT_Dxyn();
-            std::cout << "Instruct Dxyn called" << std::endl;
+            if (debug_option == true) {
+                std::cout << "Instruct Dxyn called" << std::endl;
+            }
             break;
             
         case 0xE000:
             switch(instruction & 0x00FF) {
                 case 0x009E:
                     INSTRUCT_Ex9E();
-                    std::cout << "Instruct Ex9E called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Ex9E called" << std::endl;
+                    }
                     break;
 
                 case 0x00A1:
                     INSTRUCT_ExA1();
-                    std::cout << "Instruct ExA1 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct ExA1 called" << std::endl;
+                    }
                     break;
 
                 default:
@@ -196,47 +246,65 @@ void CHIP8::InstructionSequence() {
             switch(instruction & 0x00FF) {
                 case 0x0007:
                     INSTRUCT_Fx07();
-                    std::cout << "Instruct Fx07 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx07 called" << std::endl;
+                    }
                     break;
 
                 case 0x000A:
                     INSTRUCT_Fx0A();
-                    std::cout << "Instruct Fx0A called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx0A called" << std::endl;
+                    }
                     break;
 
                 case 0x0015:
                     INSTRUCT_Fx15();
-                    std::cout << "Instruct Fx15 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx15 called" << std::endl;
+                    }
                     break;
 
                 case 0x0018:
                     INSTRUCT_Fx18();
-                    std::cout << "Instruct Fx18 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx18 called" << std::endl;
+                    }
                     break;
 
                 case 0x001E:
                     INSTRUCT_Fx1E();
-                    std::cout << "Instruct Fx1E called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx1E called" << std::endl;
+                    }
                     break;
 
                 case 0x0029:
                     INSTRUCT_Fx29();
-                    std::cout << "Instruct Fx29 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx29 called" << std::endl;
+                    }
                     break;
 
                 case 0x0033:
                     INSTRUCT_Fx33();
-                    std::cout << "Instruct Fx33 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx33 called" << std::endl;
+                    }
                     break;
 
                 case 0x0055:
                     INSTRUCT_Fx55();
-                    std::cout << "Instruct Fx55 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx55 called" << std::endl;
+                    }
                     break;
 
                 case 0x065:
                     INSTRUCT_Fx65();
-                    std::cout << "Instruct Fx65 called" << std::endl;
+                    if (debug_option == true) {
+                        std::cout << "Instruct Fx65 called" << std::endl;
+                    }
                     break;
 
                 default:
