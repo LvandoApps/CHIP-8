@@ -270,6 +270,7 @@ void CHIP8::INSTRUCT_00E0() {
 void CHIP8::INSTRUCT_00EE() {
     sp--;
     pc = stack[sp];
+    std::cout << pc << std::endl;
 }
 
 // Jump to location nnn.

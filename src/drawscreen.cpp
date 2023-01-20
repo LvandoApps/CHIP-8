@@ -59,6 +59,8 @@ void DRAWSCREEN::Update(void const* buffer, int pitch) {
 bool DRAWSCREEN::Process(uint8_t* keys) {
     bool quit = false;
     SDL_Event event;
+    // SDL process method that loops while the game is running and continues to poll events done by the player, converting
+    // those events (keypresses) into the correct outputs
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
             case SDL_QUIT:
