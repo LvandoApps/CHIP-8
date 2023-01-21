@@ -3,6 +3,7 @@
 
 class DRAWSCREEN {
     public:
+        // Required features for SDL
         SDL_Window* window = nullptr;
         SDL_Renderer* renderer = nullptr;
         SDL_Texture* texture = nullptr;
