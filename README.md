@@ -17,6 +17,10 @@ http://devernay.free.fr/hacks/chip8/C8TECH10.HTM
 
 https://tobiasvl.github.io/blog/write-a-chip-8-emulator/
 
+I also heavily made use of the file 'test_opcode.ch8' in order to test the functionality of my implemented instructions, hence was a very important file used for testing purposes and the project would have been much more difficult to complete without it (as tests would have had to have been written by hand in .ch8 format). Hence I have included it in this repository and heavily encourage the reader to check out the original author of this test file via his repository below:
+
+https://github.com/corax89/chip8-test-rom
+
 ### Requirements:
 - I have included the required files of the SDL library into the project to make the process of using the SDL library much easier for users who would like to use this code for themselves, however you will have to include the "include" folder of the SDL library into your IDE's include path (this will be src/include). Once this is done, the code should run fine as long as all other requirements are met. If not, then you will have to install and setup SDL for yourself, I got my version from this link: https://github.com/libsdl-org/SDL/releases/tag/release-2.26.2.
 - Ensure that you are using a compiler that can compile C++ code.
