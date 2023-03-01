@@ -2,7 +2,7 @@ name: Test Runner
 
 on:
   push:
-    branches: [main]
+    branches: [main, add-ci]
   pull_request:
     branches:
     - main
