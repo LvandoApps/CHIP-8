@@ -5,7 +5,7 @@ CXX = g++
 LDFLAGS := $(shell pkg-config --cflags --libs sdl2)
 
 emulator: $(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $(OBJS)
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
 
 clean:
 	rm -f src/*.o
