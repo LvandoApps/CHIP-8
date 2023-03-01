@@ -1,0 +1,24 @@
+name: Test Runner
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+      
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+  
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y libsdl2-dev
+      
+      - name: Check compilation
+        run: make emulator
